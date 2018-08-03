@@ -74,7 +74,7 @@ drawSpectrumWithoutContinuumIron <- function(chosen_q, quasars, wavelengthsMatri
 }
 
 #' @export
-drawChosenPeaksComponents<-function(chosen_q, quasars, wavelengthsMatrix, spectrumsMatrix, continuumsMatrix, feTemplatesMatrix, sizesVector){
+drawChosenPeaksComponents<-function(chosen_q, quasars, outputfit, wavelengthsMatrix, spectrumsMatrix, continuumsMatrix, feTemplatesMatrix, sizesVector){
   spectrumsMatrixORIG <- getSpectrumsMatrix(quasars)
   spectrumsMatrixNoIron <- rMinusMatrix(ptr, spectrumsMatrix, feTemplatesMatrix)
   spectrumsMatrixEmissionLines <- rMinusMatrix(ptr, spectrumsMatrixNoIron, continuumsMatrix)
@@ -83,6 +83,7 @@ drawChosenPeaksComponents<-function(chosen_q, quasars, wavelengthsMatrix, spectr
   lines(wavelengthsMatrix[chosen_q,1:sizesVector[chosen_q]],continuumsMatrix[chosen_q,1:sizesVector[chosen_q]],col="gray45")
   lines(wavelengthsMatrix[chosen_q,1:sizesVector[chosen_q]],feTemplatesMatrix[chosen_q,1:sizesVector[chosen_q]],col="gray35")
 }
+
 
 #' @export
 drawAllPeaksComponents2Files<-function(outpath, NSET, quasars, wavelengthsMatrix, spectrumsMatrix, continuumsMatrix, feTemplatesMatrix, sizesVector){
